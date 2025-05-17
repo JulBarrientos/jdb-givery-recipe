@@ -1,6 +1,8 @@
 name := "recipe-api"
 version := "1.0"
 scalaVersion := "2.13.16"
+packageName in Universal := "main"
+mainClass in Compile := Some("com.recipeapi.Main")
 
 libraryDependencies ++= Seq(
   // Akka HTTP
