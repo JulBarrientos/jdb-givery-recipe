@@ -15,105 +15,126 @@ import scala.util.{Failure, Success}
 class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) extends JsonFormats {
   
   val routes: Route = {
-    pathPrefix("recipes") {
-      pathEnd {
-        post {
-          println("recpies /post")
-          entity(as[RecipeRequest]) { recipeRequest =>
-            validateRecipeRequest(recipeRequest) match {
-              case Some(errorMsg) => {
-                println("Recipe creation error!")
-                println(errorMsg)
-                complete(StatusCodes.BadRequest -> JsObject(
-                  "message" -> JsString("Recipe creation failed!"),
-                  "required" -> JsString(errorMsg)
+    logRequest("Request") { // Log todas las solicitudes entrantes
+      pathPrefix("recipes") {
+        println(s"Received request to path: /recipes")
+        pathEnd {
+          post {
+            println("POST request to /recipes endpoint received")
+            entity(as[RecipeRequest]) { recipeRequest =>
+              println(s"Recipe request data: ${recipeRequest.toJson}")
+              validateRecipeRequest(recipeRequest) match {
+                case Some(errorMsg) => {
+                  println(s"Recipe creation error: $errorMsg")
+                  complete(StatusCodes.BadRequest -> JsObject(
+                    "message" -> JsString("Recipe creation failed!"),
+                    "required" -> JsString(errorMsg)
+                  ).prettyPrint)
+                }
+                case None =>
+                  onComplete(repository.create(recipeRequest)) {
+                    case Success(recipe) =>{
+                      println(s"Recipe successfully created with ID: ${recipe.id}")
+                      complete(StatusCodes.OK -> JsObject(
+                        "message" -> JsString("Recipe successfully created!"),
+                        "recipe" -> JsArray(Vector(recipe.toJson))
+                      ).prettyPrint)
+                    }
+                    case Failure(ex) =>{
+                      println(s"Recipe creation failed with exception: ${ex.getMessage}")
+                      complete(StatusCodes.InternalServerError -> JsObject(
+                        "message" -> JsString("Recipe creation failed!")
+                      ).prettyPrint)
+                    }
+                  }
+              }
+            }
+          } ~
+          get {
+            println("GET request to /recipes endpoint received")
+            onComplete(repository.getAll()) {
+              case Success(recipes) =>{
+                println(s"Retrieved ${recipes.size} recipes")
+                complete(StatusCodes.OK -> JsObject(
+                  "recipes" -> recipes.toJson
                 ).prettyPrint)
               }
-              case None =>
-                onComplete(repository.create(recipeRequest)) {
-                  case Success(recipe) =>{
-                    println("Recipe successfully created!")
-                    println(Vector(recipe.toJson))
-                    complete(StatusCodes.OK -> JsObject(
-                      "message" -> JsString("Recipe successfully created!"),
-                      "recipe" -> JsArray(Vector(recipe.toJson))
-                    ).prettyPrint)
-                  }
-                  case Failure(ex) =>{
-                    println("Recipe creation failed!")
-                    println(ex.toString())
-                    complete(StatusCodes.InternalServerError -> JsObject(
-                      "message" -> JsString("Recipe creation failed!")
-                    ).prettyPrint)
-                  }
-                }
+              case Failure(ex) =>{
+                println(s"Error retrieving recipes: ${ex.getMessage}")
+                complete(StatusCodes.InternalServerError -> "Error retrieving recipes")
+              }
             }
           }
         } ~
-        get {
-          println("recipes /get")
-          onComplete(repository.getAll()) {
-            case Success(recipes) =>{
-              println(recipes.toJson)
-              complete(StatusCodes.OK -> JsObject(
-                "recipes" -> recipes.toJson
-              ).prettyPrint)
-            }
-            case Failure(ex) =>{
-              println("Error retrieving recipes")
-              println(ex)
-              complete(StatusCodes.InternalServerError -> "Error retrieving recipes")
-            }
-          }
-        }
-      } ~
-      path(IntNumber) { id =>
-        get {
-          onComplete(repository.getById(id)) {
-            case Success(Some(recipe)) =>
-              complete(StatusCodes.OK -> JsObject(
-                "message" -> JsString("Recipe details by id"),
-                "recipe" -> JsArray(Vector(recipe.toJson))
-              ).prettyPrint)
-            case Success(None) =>
-              complete(StatusCodes.NotFound -> JsObject(
-                "message" -> JsString("No recipe found")
-              ).prettyPrint)
-            case Failure(ex) =>
-              complete(StatusCodes.InternalServerError -> "Error retrieving recipe")
-          }
-        } ~
-        patch {
-          entity(as[RecipeRequest]) { recipeRequest =>
-            onComplete(repository.update(id, recipeRequest)) {
+        path(IntNumber) { id =>
+          println(s"Request for recipe with ID: $id")
+          get {
+            println(s"GET request for recipe ID: $id")
+            onComplete(repository.getById(id)) {
               case Success(Some(recipe)) =>
+                println(s"Recipe found with ID: $id")
                 complete(StatusCodes.OK -> JsObject(
-                  "message" -> JsString("Recipe successfully updated!"),
+                  "message" -> JsString("Recipe details by id"),
                   "recipe" -> JsArray(Vector(recipe.toJson))
                 ).prettyPrint)
               case Success(None) =>
+                println(s"No recipe found with ID: $id")
                 complete(StatusCodes.NotFound -> JsObject(
                   "message" -> JsString("No recipe found")
                 ).prettyPrint)
               case Failure(ex) =>
-                complete(StatusCodes.InternalServerError -> "Error updating recipe")
+                println(s"Error retrieving recipe ID $id: ${ex.getMessage}")
+                complete(StatusCodes.InternalServerError -> "Error retrieving recipe")
+            }
+          } ~
+          patch {
+            println(s"PATCH request for recipe ID: $id")
+            entity(as[RecipeRequest]) { recipeRequest =>
+              println(s"Update data for recipe ID $id: ${recipeRequest.toJson}")
+              onComplete(repository.update(id, recipeRequest)) {
+                case Success(Some(recipe)) =>
+                  println(s"Recipe ID $id successfully updated")
+                  complete(StatusCodes.OK -> JsObject(
+                    "message" -> JsString("Recipe successfully updated!"),
+                    "recipe" -> JsArray(Vector(recipe.toJson))
+                  ).prettyPrint)
+                case Success(None) =>
+                  println(s"No recipe found with ID: $id for update")
+                  complete(StatusCodes.NotFound -> JsObject(
+                    "message" -> JsString("No recipe found")
+                  ).prettyPrint)
+                case Failure(ex) =>
+                  println(s"Error updating recipe ID $id: ${ex.getMessage}")
+                  complete(StatusCodes.InternalServerError -> "Error updating recipe")
+              }
+            }
+          } ~
+          delete {
+            println(s"DELETE request for recipe ID: $id")
+            onComplete(repository.delete(id)) {
+              case Success(true) =>
+                println(s"Recipe ID $id successfully deleted")
+                complete(StatusCodes.OK -> JsObject(
+                  "message" -> JsString("Recipe successfully removed!")
+                ).prettyPrint)
+              case Success(false) =>
+                println(s"No recipe found with ID: $id for deletion")
+                complete(StatusCodes.NotFound -> JsObject(
+                  "message" -> JsString("No recipe found")
+                ).prettyPrint)
+              case Failure(ex) =>
+                println(s"Error deleting recipe ID $id: ${ex.getMessage}")
+                complete(StatusCodes.InternalServerError -> "Error deleting recipe")
             }
           }
-        } ~
-        delete {
-          onComplete(repository.delete(id)) {
-            case Success(true) =>
-              complete(StatusCodes.OK -> JsObject(
-                "message" -> JsString("Recipe successfully removed!")
-              ).prettyPrint)
-            case Success(false) =>
-              complete(StatusCodes.NotFound -> JsObject(
-                "message" -> JsString("No recipe found")
-              ).prettyPrint)
-            case Failure(ex) =>
-              complete(StatusCodes.InternalServerError -> "Error deleting recipe")
-          }
         }
+      } ~
+      // Agregar una ruta para capturar y registrar solicitudes incorrectas
+      pathPrefix("recipe") { // Nota: esto captura el singular "recipe"
+        println("WARNING: Request received to singular path /recipe instead of plural /recipes")
+        complete(StatusCodes.NotFound -> JsObject(
+          "message" -> JsString("Did you mean to use /recipes instead of /recipe?")
+        ).prettyPrint)
       }
     }
   }
