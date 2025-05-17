@@ -5,21 +5,18 @@ import slick.jdbc.{JdbcProfile, PostgresProfile, H2Profile}
 
 object Config {
   val config = ConfigFactory.load()
-  private val env = sys.env.getOrElse("APP_ENV", "railway")
+  private val env = sys.env.getOrElse("APP_ENV", "local")
 
   println(s"Ambiente: $env")
-  
-  // Determinar el perfil basado en el entorno
+
   val profile: JdbcProfile = env match {
     case "local" => H2Profile
     case _ => PostgresProfile
   }
 
-  // Log de debugging
   println(s"Usando perfil: ${profile.getClass.getName}")
 
-  // Preferir variables de entorno
-  val dbUrl = sys.env.get("DATABASE_URL") match {
+   val dbUrl = sys.env.get("DATABASE_URL") match {
     case Some(url) if url.startsWith("postgres://") => 
       // Convertir formato postgres:// a jdbc:postgresql://
       val jdbcUrl = s"jdbc:postgresql${url.substring(8)}"
@@ -33,11 +30,11 @@ object Config {
       val db = sys.env.getOrElse("PGDATABASE", "postgres")
       s"jdbc:postgresql://$host:$port/$db"
   }
-  
+
   val dbUser = sys.env.getOrElse("PGUSER", "postgres")
   val dbPassword = sys.env.getOrElse("PGPASSWORD", "postgres")
   
-  val serverHost = sys.env.getOrElse("RAILWAY_PUBLIC_DOMAIN","0.0.0.0")
+  val serverHost = sys.env.getOrElse("HOST", "0.0.0.0")
   val serverPort = sys.env.getOrElse("PORT", "8080").toInt
   
   // Debug info
