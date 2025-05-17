@@ -16,6 +16,7 @@ object Config {
 
   println(s"Usando perfil: ${profile.getClass.getName}")
 
+/*
   val dbUrl = sys.env.get("DATABASE_URL") match {
     case Some(url) if url.startsWith("postgres://") => 
       // Convertir formato postgres:// a jdbc:postgresql://
@@ -30,6 +31,8 @@ object Config {
       val db = sys.env.getOrElse("PGDATABASE", "postgres")
       s"jdbc:postgresql://$host:$port/$db"
   }
+  */
+  val dbUrl = "jdbc:postgresql://postgres.railway.internal:5432/railway?user=postgres&password=qKdtJLDDlopBNJoVzAYugchpRupGmKfy"
 
   val dbUser = sys.env.getOrElse("PGUSER", "postgres")
   val dbPassword = sys.env.getOrElse("PGPASSWORD", "postgres")
