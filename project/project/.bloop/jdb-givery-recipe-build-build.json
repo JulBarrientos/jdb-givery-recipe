@@ -1,16 +1,16 @@
 {
     "version": "1.4.0",
     "project": {
-        "name": "jdb-givery-recipe-build",
-        "directory": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project",
-        "workspaceDir": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project",
+        "name": "jdb-givery-recipe-build-build",
+        "directory": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project",
+        "workspaceDir": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project",
         "sources": [
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\scala",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\scala-2.12",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\scala-2",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\java",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\scala-sbt-1.0",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\scala",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\scala-2.12",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\scala-2",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\java",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\scala-sbt-1.0",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
         ],
         "dependencies": [
             
@@ -19,15 +19,9 @@
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\sbt\\1.10.11\\sbt-1.10.11.jar",
             "C:\\Users\\julia\\.sbt\\boot\\scala-2.12.20\\lib\\scala-library.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\epfl\\scala\\sbt-bloop_2.12_1.0\\2.0.10\\sbt-bloop_2.12_1.0-2.0.10.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\sbt\\sbt-native-packager_2.12_1.0\\1.11.1\\sbt-native-packager_2.12_1.0-1.11.1.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\main_2.12\\1.10.11\\main_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\io_2.12\\1.10.5\\io_2.12-1.10.5.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\epfl\\scala\\bloop-config_2.12\\2.3.2\\bloop-config_2.12-2.3.2.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-compress\\1.27.1\\commons-compress-1.27.1.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant\\1.10.15\\ant-1.10.15.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\eldis\\tool-launcher\\0.2.2\\tool-launcher-0.2.2.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\logic_2.12\\1.10.11\\logic_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\actions_2.12\\1.10.11\\actions_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\main-settings_2.12\\1.10.11\\main-settings_2.12-1.10.11.jar",
@@ -37,6 +31,7 @@
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\scripted-plugin_2.12\\1.10.11\\scripted-plugin_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\zinc-lm-integration_2.12\\1.10.11\\zinc-lm-integration_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\util-logging_2.12\\1.10.11\\util-logging_2.12-1.10.11.jar",
+            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\launcher-interface\\1.4.4\\launcher-interface-1.4.4.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\ben-manes\\caffeine\\caffeine\\2.8.5\\caffeine-2.8.5.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\io\\get-coursier\\lm-coursier-shaded_2.12\\2.1.8\\lm-coursier-shaded_2.12-2.1.8.jar",
@@ -50,10 +45,6 @@
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\plokhotnyuk\\jsoniter-scala\\jsoniter-scala-core_2.12\\2.13.5.2\\jsoniter-scala-core_2.12-2.13.5.2.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\lihaoyi\\unroll-annotation_2.12\\0.1.12\\unroll-annotation_2.12-0.1.12.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-codec\\commons-codec\\1.17.1\\commons-codec-1.17.1.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-io\\commons-io\\2.16.1\\commons-io-2.16.1.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-lang3\\3.16.0\\commons-lang3-3.16.0.jar",
-            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant-launcher\\1.10.15\\ant-launcher-1.10.15.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\util-relation_2.12\\1.10.11\\util-relation_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\completion_2.12\\1.10.11\\completion_2.12-1.10.11.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\task-system_2.12\\1.10.11\\task-system_2.12-1.10.11.jar",
@@ -99,6 +90,7 @@
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\zinc-persist_2.12\\1.10.8\\zinc-persist_2.12-1.10.8.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\eed3si9n\\sjson-new-murmurhash_2.12\\0.10.1\\sjson-new-murmurhash_2.12-0.10.1.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\ipcsocket\\ipcsocket\\1.6.3\\ipcsocket-1.6.3.jar",
+            "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\net\\openhft\\zero-allocation-hashing\\0.16\\zero-allocation-hashing-0.16.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\fusesource\\jansi\\jansi\\2.4.1\\jansi-2.4.1.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\eed3si9n\\gigahorse-core_2.12\\0.7.0\\gigahorse-core_2.12-0.7.0.jar",
@@ -112,11 +104,11 @@
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\reactivestreams\\reactive-streams\\1.0.3\\reactive-streams-1.0.3.jar",
             "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\config\\1.4.2\\config-1.4.2.jar"
         ],
-        "out": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\.bloop\\jdb-givery-recipe-build",
-        "classesDir": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\.bloop\\jdb-givery-recipe-build\\scala-2.12\\sbt-1.0\\classes",
+        "out": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\.bloop\\jdb-givery-recipe-build-build",
+        "classesDir": "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\.bloop\\jdb-givery-recipe-build-build\\scala-2.12\\sbt-1.0\\classes",
         "resources": [
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\src\\main\\resources",
-            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\src\\main\\resources",
+            "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -124,6 +116,7 @@
             "version": "2.12.20",
             "options": [
                 "-deprecation",
+                "-Wconf:cat=unused-nowarn:s",
                 "-Wconf:cat=unused-nowarn:s",
                 "-Wconf:cat=unused-nowarn:s",
                 "-Xsource:3"
@@ -155,8 +148,8 @@
                 "import _root_.sbt._",
                 "import _root_.sbt.Keys._",
                 "import _root_.sbt.nio.Keys._",
-                "import _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.bloop.integrations.sbt.BloopPlugin.autoImport._, _root_.com.typesafe.sbt.SbtNativePackager.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.JavaAppPackaging.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.jar.ClasspathJarPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.jlink.JlinkPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.systemloader.SystemdPlugin.autoImport._, _root_.com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin.autoImport._, _root_.com.typesafe.sbt.packager.debian.DebianPlugin.autoImport._, _root_.com.typesafe.sbt.packager.docker.DockerPlugin.autoImport._, _root_.com.typesafe.sbt.packager.graalvmnativeimage.GraalVMNativeImagePlugin.autoImport._, _root_.com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin.autoImport._, _root_.com.typesafe.sbt.packager.linux.LinuxPlugin.autoImport._, _root_.com.typesafe.sbt.packager.rpm.RpmPlugin.autoImport._, _root_.com.typesafe.sbt.packager.universal.UniversalPlugin.autoImport._, _root_.com.typesafe.sbt.packager.windows.WindowsPlugin.autoImport._",
-                "import _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.bloop.integrations.sbt.BloopPlugin, _root_.com.typesafe.sbt.SbtNativePackager, _root_.com.typesafe.sbt.packager.archetypes.JavaAppPackaging, _root_.com.typesafe.sbt.packager.archetypes.JavaServerAppPackaging, _root_.com.typesafe.sbt.packager.archetypes.jar.ClasspathJarPlugin, _root_.com.typesafe.sbt.packager.archetypes.jar.LauncherJarPlugin, _root_.com.typesafe.sbt.packager.archetypes.jlink.JlinkPlugin, _root_.com.typesafe.sbt.packager.archetypes.scripts.AshScriptPlugin, _root_.com.typesafe.sbt.packager.archetypes.scripts.BashStartScriptPlugin, _root_.com.typesafe.sbt.packager.archetypes.scripts.BatStartScriptPlugin, _root_.com.typesafe.sbt.packager.archetypes.systemloader.SystemVPlugin, _root_.com.typesafe.sbt.packager.archetypes.systemloader.SystemdPlugin, _root_.com.typesafe.sbt.packager.archetypes.systemloader.SystemloaderPlugin, _root_.com.typesafe.sbt.packager.archetypes.systemloader.UpstartPlugin, _root_.com.typesafe.sbt.packager.debian.DebianDeployPlugin, _root_.com.typesafe.sbt.packager.debian.DebianPlugin, _root_.com.typesafe.sbt.packager.debian.JDebPackaging, _root_.com.typesafe.sbt.packager.docker.DockerPlugin, _root_.com.typesafe.sbt.packager.docker.DockerSpotifyClientPlugin, _root_.com.typesafe.sbt.packager.graalvmnativeimage.GraalVMNativeImagePlugin, _root_.com.typesafe.sbt.packager.jdkpackager.JDKPackagerDeployPlugin, _root_.com.typesafe.sbt.packager.jdkpackager.JDKPackagerPlugin, _root_.com.typesafe.sbt.packager.linux.LinuxPlugin, _root_.com.typesafe.sbt.packager.rpm.RpmDeployPlugin, _root_.com.typesafe.sbt.packager.rpm.RpmPlugin, _root_.com.typesafe.sbt.packager.universal.UniversalDeployPlugin, _root_.com.typesafe.sbt.packager.universal.UniversalPlugin, _root_.com.typesafe.sbt.packager.windows.WindowsDeployPlugin, _root_.com.typesafe.sbt.packager.windows.WindowsPlugin"
+                "import _root_.sbt.ScriptedPlugin.autoImport._, _root_.sbt.plugins.JUnitXmlReportPlugin.autoImport._, _root_.sbt.plugins.MiniDependencyTreePlugin.autoImport._, _root_.bloop.integrations.sbt.BloopPlugin.autoImport._",
+                "import _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.ScriptedPlugin, _root_.sbt.plugins.SbtPlugin, _root_.sbt.plugins.SemanticdbPlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, _root_.sbt.plugins.MiniDependencyTreePlugin, _root_.bloop.integrations.sbt.BloopPlugin"
             ]
         },
         "test": {
@@ -223,7 +216,7 @@
             "config": {
                 "home": "C:\\Users\\julia\\AppData\\Local\\Coursier\\cache\\arc\\https\\github.com\\adoptium\\temurin11-binaries\\releases\\download\\jdk-11.0.27%252B6\\OpenJDK11U-jdk_x64_windows_hotspot_11.0.27_6.zip\\jdk-11.0.27+6",
                 "options": [
-                    "-Duser.dir=C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project"
+                    "-Duser.dir=C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project"
                 ]
             },
             "mainClass": [
@@ -232,28 +225,16 @@
             "runtimeConfig": {
                 "home": "C:\\Users\\julia\\AppData\\Local\\Coursier\\cache\\arc\\https\\github.com\\adoptium\\temurin11-binaries\\releases\\download\\jdk-11.0.27%252B6\\OpenJDK11U-jdk_x64_windows_hotspot_11.0.27_6.zip\\jdk-11.0.27+6",
                 "options": [
-                    "-Duser.dir=C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project"
+                    "-Duser.dir=C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project"
                 ]
             },
             "classpath": [
-                "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\.bloop\\jdb-givery-recipe-build\\scala-2.12\\sbt-1.0\\classes",
+                "C:\\Users\\julia\\Documents\\Projects\\jdb-givery-recipe\\project\\project\\.bloop\\jdb-givery-recipe-build-build\\scala-2.12\\sbt-1.0\\classes",
                 "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\epfl\\scala\\sbt-bloop_2.12_1.0\\2.0.10\\sbt-bloop_2.12_1.0-2.0.10.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\sbt\\sbt-native-packager_2.12_1.0\\1.11.1\\sbt-native-packager_2.12_1.0-1.11.1.jar",
                 "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\epfl\\scala\\bloop-config_2.12\\2.3.2\\bloop-config_2.12-2.3.2.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-compress\\1.27.1\\commons-compress-1.27.1.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant\\1.10.15\\ant-1.10.15.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\eldis\\tool-launcher\\0.2.2\\tool-launcher-0.2.2.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\io_2.12\\1.10.4\\io_2.12-1.10.4.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.2.0\\scala-xml_2.12-2.2.0.jar",
                 "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\plokhotnyuk\\jsoniter-scala\\jsoniter-scala-core_2.12\\2.13.5.2\\jsoniter-scala-core_2.12-2.13.5.2.jar",
                 "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\lihaoyi\\unroll-annotation_2.12\\0.1.12\\unroll-annotation_2.12-0.1.12.jar",
-                "C:\\Users\\julia\\.sbt\\boot\\scala-2.12.20\\lib\\scala-library.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-codec\\commons-codec\\1.17.1\\commons-codec-1.17.1.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-io\\commons-io\\2.16.1\\commons-io-2.16.1.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-lang3\\3.16.0\\commons-lang3-3.16.0.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant-launcher\\1.10.15\\ant-launcher-1.10.15.jar",
-                "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12.jar"
+                "C:\\Users\\julia\\.sbt\\boot\\scala-2.12.20\\lib\\scala-library.jar"
             ]
         },
         "resolution": {
@@ -276,23 +257,6 @@
                     ]
                 },
                 {
-                    "organization": "com.github.sbt",
-                    "name": "sbt-native-packager",
-                    "version": "1.11.1",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "sbt-native-packager",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\sbt\\sbt-native-packager_2.12_1.0\\1.11.1\\sbt-native-packager_2.12_1.0-1.11.1.jar"
-                        },
-                        {
-                            "name": "sbt-native-packager",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\sbt\\sbt-native-packager_2.12_1.0\\1.11.1\\sbt-native-packager_2.12_1.0-1.11.1-sources.jar"
-                        }
-                    ]
-                },
-                {
                     "organization": "ch.epfl.scala",
                     "name": "bloop-config_2.12",
                     "version": "2.3.2",
@@ -306,74 +270,6 @@
                             "name": "bloop-config_2.12",
                             "classifier": "sources",
                             "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\ch\\epfl\\scala\\bloop-config_2.12\\2.3.2\\bloop-config_2.12-2.3.2-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.apache.commons",
-                    "name": "commons-compress",
-                    "version": "1.27.1",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "commons-compress",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-compress\\1.27.1\\commons-compress-1.27.1.jar"
-                        },
-                        {
-                            "name": "commons-compress",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-compress\\1.27.1\\commons-compress-1.27.1-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.apache.ant",
-                    "name": "ant",
-                    "version": "1.10.15",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "ant",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant\\1.10.15\\ant-1.10.15.jar"
-                        },
-                        {
-                            "name": "ant",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant\\1.10.15\\ant-1.10.15-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.github.eldis",
-                    "name": "tool-launcher",
-                    "version": "0.2.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "tool-launcher",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\eldis\\tool-launcher\\0.2.2\\tool-launcher-0.2.2.jar"
-                        },
-                        {
-                            "name": "tool-launcher",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\github\\eldis\\tool-launcher\\0.2.2\\tool-launcher-0.2.2-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.scala-lang.modules",
-                    "name": "scala-parser-combinators_2.12",
-                    "version": "1.1.2",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "scala-parser-combinators_2.12",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2.jar"
-                        },
-                        {
-                            "name": "scala-parser-combinators_2.12",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2-sources.jar"
                         }
                     ]
                 },
@@ -429,91 +325,6 @@
                     ]
                 },
                 {
-                    "organization": "commons-codec",
-                    "name": "commons-codec",
-                    "version": "1.17.1",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "commons-codec",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-codec\\commons-codec\\1.17.1\\commons-codec-1.17.1.jar"
-                        },
-                        {
-                            "name": "commons-codec",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-codec\\commons-codec\\1.17.1\\commons-codec-1.17.1-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "commons-io",
-                    "name": "commons-io",
-                    "version": "2.16.1",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "commons-io",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-io\\commons-io\\2.16.1\\commons-io-2.16.1.jar"
-                        },
-                        {
-                            "name": "commons-io",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\commons-io\\commons-io\\2.16.1\\commons-io-2.16.1-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.apache.commons",
-                    "name": "commons-lang3",
-                    "version": "3.16.0",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "commons-lang3",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-lang3\\3.16.0\\commons-lang3-3.16.0.jar"
-                        },
-                        {
-                            "name": "commons-lang3",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\commons\\commons-lang3\\3.16.0\\commons-lang3-3.16.0-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.apache.ant",
-                    "name": "ant-launcher",
-                    "version": "1.10.15",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "ant-launcher",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant-launcher\\1.10.15\\ant-launcher-1.10.15.jar"
-                        },
-                        {
-                            "name": "ant-launcher",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\apache\\ant\\ant-launcher\\1.10.15\\ant-launcher-1.10.15-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "com.swoval",
-                    "name": "file-tree-views",
-                    "version": "2.1.12",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "file-tree-views",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12.jar"
-                        },
-                        {
-                            "name": "file-tree-views",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12-sources.jar"
-                        }
-                    ]
-                },
-                {
                     "organization": "org.scala-sbt",
                     "name": "sbt",
                     "version": "1.10.11",
@@ -561,23 +372,6 @@
                             "name": "io_2.12",
                             "classifier": "sources",
                             "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\io_2.12\\1.10.5\\io_2.12-1.10.5-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.scala-lang.modules",
-                    "name": "scala-xml_2.12",
-                    "version": "2.3.0",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "scala-xml_2.12",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0.jar"
-                        },
-                        {
-                            "name": "scala-xml_2.12",
-                            "classifier": "sources",
-                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0-sources.jar"
                         }
                     ]
                 },
@@ -731,6 +525,23 @@
                             "name": "util-logging_2.12",
                             "classifier": "sources",
                             "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\util-logging_2.12\\1.10.11\\util-logging_2.12-1.10.11-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang.modules",
+                    "name": "scala-xml_2.12",
+                    "version": "2.3.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-xml_2.12",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0.jar"
+                        },
+                        {
+                            "name": "scala-xml_2.12",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-xml_2.12\\2.3.0\\scala-xml_2.12-2.3.0-sources.jar"
                         }
                     ]
                 },
@@ -901,6 +712,23 @@
                             "name": "zinc-compile_2.12",
                             "classifier": "sources",
                             "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\zinc-compile_2.12\\1.10.8\\zinc-compile_2.12-1.10.8-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "com.swoval",
+                    "name": "file-tree-views",
+                    "version": "2.1.12",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "file-tree-views",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12.jar"
+                        },
+                        {
+                            "name": "file-tree-views",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\swoval\\file-tree-views\\2.1.12\\file-tree-views-2.1.12-sources.jar"
                         }
                     ]
                 },
@@ -1666,6 +1494,23 @@
                             "name": "ipcsocket",
                             "classifier": "sources",
                             "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-sbt\\ipcsocket\\ipcsocket\\1.6.3\\ipcsocket-1.6.3-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang.modules",
+                    "name": "scala-parser-combinators_2.12",
+                    "version": "1.1.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-parser-combinators_2.12",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2.jar"
+                        },
+                        {
+                            "name": "scala-parser-combinators_2.12",
+                            "classifier": "sources",
+                            "path": "C:\\Users\\julia\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.12\\1.1.2\\scala-parser-combinators_2.12-1.1.2-sources.jar"
                         }
                     ]
                 },
