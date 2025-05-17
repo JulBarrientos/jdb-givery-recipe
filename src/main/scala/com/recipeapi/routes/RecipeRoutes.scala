@@ -18,6 +18,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
     pathPrefix("recipes") {
       pathEnd {
         post {
+          println("recpies /post")
           entity(as[RecipeRequest]) { recipeRequest =>
             validateRecipeRequest(recipeRequest) match {
               case Some(errorMsg) => {
@@ -50,7 +51,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
           }
         } ~
         get {
-          println(repository)
+          println("recipes /get")
           onComplete(repository.getAll()) {
             case Success(recipes) =>{
               println(recipes.toJson)
