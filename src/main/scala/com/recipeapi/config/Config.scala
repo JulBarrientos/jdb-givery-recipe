@@ -16,12 +16,25 @@ object Config {
 
   println(s"Usando perfil: ${profile.getClass.getName}")
 
-  val dbUrl = "jdbc:" + sys.env.get("DATABASE_URL") 
+  val dbUrl = sys.env.get("DATABASE_URL") match {
+    case Some(url) if url.startsWith("postgres://") => 
+      // Convertir formato postgres:// a jdbc:postgresql://
+      val jdbcUrl = s"jdbc:postgresql${url.substring(8)}"
+      println(s"Converted URL: $jdbcUrl")
+      jdbcUrl
+    case Some(url) => s"jdbc:$url"
+    case None => 
+      // Construir a partir de componentes
+      val host = sys.env.getOrElse("PGHOST", "localhost")
+      val port = sys.env.getOrElse("PGPORT", "5432")
+      val db = sys.env.getOrElse("PGDATABASE", "postgres")
+      s"jdbc:postgresql://$host:$port/$db"
+  }
 
   val dbUser = sys.env.getOrElse("PGUSER", "postgres")
   val dbPassword = sys.env.getOrElse("PGPASSWORD", "postgres")
   
-  val serverHost = sys.env.getOrElse("HOST", "8080")
+  val serverHost = sys.env.getOrElse("HOST", "0.0.0.0")
   val serverPort = sys.env.getOrElse("PORT", "8080").toInt
   
   // Debug info
