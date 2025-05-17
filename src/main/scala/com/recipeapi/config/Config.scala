@@ -1,30 +1,47 @@
 package com.recipeapi.config
 
 import com.typesafe.config.ConfigFactory
-import slick.jdbc.JdbcProfile
-import slick.jdbc.PostgresProfile
-import slick.jdbc.H2Profile
+import slick.jdbc.{JdbcProfile, PostgresProfile, H2Profile}
 
 object Config {
   val config = ConfigFactory.load()
-  private val env = "railway"
+  private val env = sys.env.getOrElse("APP_ENV", "railway")
 
   println(s"Ambiente: $env")
+  
+  // Determinar el perfil basado en el entorno
   val profile: JdbcProfile = env match {
-    case "prod" | "railway" => PostgresProfile
-    case _ => H2Profile
+    case "local" => H2Profile
+    case _ => PostgresProfile
   }
 
-  val dbConfig = env match {
-    case "prod" => config.getConfig("docker")
-    case "railway" => config.getConfig("railway")
-    case _ => config.getConfig("local")
+  // Log de debugging
+  println(s"Usando perfil: ${profile.getClass.getName}")
+
+  // Preferir variables de entorno
+  val dbUrl = sys.env.get("DATABASE_URL") match {
+    case Some(url) if url.startsWith("postgres://") => 
+      // Convertir formato postgres:// a jdbc:postgresql://
+      val jdbcUrl = s"jdbc:postgresql${url.substring(8)}"
+      println(s"Converted URL: $jdbcUrl")
+      jdbcUrl
+    case Some(url) => url
+    case None => 
+      // Construir a partir de componentes
+      val host = sys.env.getOrElse("PGHOST", "localhost")
+      val port = sys.env.getOrElse("PGPORT", "5432")
+      val db = sys.env.getOrElse("PGDATABASE", "postgres")
+      s"jdbc:postgresql://$host:$port/$db"
   }
   
-  val dbUrl = sys.env.getOrElse("DATABASE_URL", dbConfig.getString("url"))
-  val dbUser = sys.env.getOrElse("PGUSER", dbConfig.getString("user"))
-  val dbPassword = sys.env.getOrElse("PGPASSWORD", dbConfig.getString("password"))
+  val dbUser = sys.env.getOrElse("PGUSER", "postgres")
+  val dbPassword = sys.env.getOrElse("PGPASSWORD", "postgres")
   
-  val serverHost = config.getConfig("server").getString("host")
-  val serverPort = config.getConfig("server").getInt("port")
+  val serverHost = "0.0.0.0"
+  val serverPort = sys.env.getOrElse("PORT", "8080").toInt
+  
+  // Debug info
+  println(s"DB URL: $dbUrl")
+  println(s"DB User: $dbUser")
+  println(s"Server running on: $serverHost:$serverPort")
 }

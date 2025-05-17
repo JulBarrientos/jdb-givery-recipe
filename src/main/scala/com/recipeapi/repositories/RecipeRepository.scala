@@ -1,11 +1,11 @@
 package com.recipeapi.repositories
 
 import com.recipeapi.db.{DatabaseConfig, RecipeTable}
-
 import com.recipeapi.models.{Recipe, RecipeRequest}
-import slick.jdbc.H2Profile.api._
+import com.recipeapi.db.DatabaseConfig.profile.api._  // Usar el perfil dinámico
 import java.time.LocalDateTime
 import scala.concurrent.{ExecutionContext, Future}
+import scala.util.{Try, Success, Failure}
 
 class RecipeRepository(implicit ec: ExecutionContext) {
   import DatabaseConfig.db
@@ -14,7 +14,33 @@ class RecipeRepository(implicit ec: ExecutionContext) {
   
   // Inicialización de la tabla
   def init(): Future[Unit] = {
-    db.run(recipes.schema.createIfNotExists)
+    println("Inicializando tablas...")
+    db.run(recipes.schema.createIfNotExists).map { _ =>
+      println("Tablas inicializadas correctamente.")
+    }.recover {
+      case ex =>
+        println(s"Error al inicializar tablas: ${ex.getMessage}")
+        throw ex
+    }
+  }
+  
+  // Método para asegurar que las tablas existan
+  def ensureTablesExist(): Future[Unit] = {
+    println("Verificando existencia de tablas...")
+    val existsAction = sql"SELECT 1 FROM recipes LIMIT 1".as[Int].headOption
+    
+    db.run(existsAction).flatMap {
+      case Some(_) => 
+        println("La tabla recipes ya existe.")
+        Future.successful(())
+      case None => 
+        println("La tabla recipes no existe. Creándola...")
+        init()
+    }.recover {
+      case ex => 
+        println(s"Error al verificar tablas: ${ex.getMessage}. Intentando crear...")
+        init()
+    }
   }
   
   // Crear una receta

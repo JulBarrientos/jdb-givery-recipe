@@ -20,20 +20,38 @@ object Main extends App {
   
   // Inicializar repositorio
   val repository = new RecipeRepository()
-  repository.init()
+  
+  repository.ensureTablesExist().onComplete {
+    case Success(_) => println("Tablas verificadas correctamente.")
+    case Failure(ex) => println(s"Error al verificar tablas: ${ex.getMessage}")
+  }
   
   // Inicializar rutas
   val routes = new RecipeRoutes(repository).routes
-  
-  val port = sys.env.get("PORT").map(_.toInt).getOrElse(Config.serverPort)
-  val host = sys.env.get("HOST").getOrElse(Config.serverHost)
 
   // Iniciar servidor
-  val bindingFuture = Http().newServerAt(host, port).bind(routes)
+  val bindingFuture = Http().newServerAt(Config.serverHost, Config.serverPort).bind(routes)
   
-  sys.addShutdownHook {
+  bindingFuture.onComplete {
+    case Success(binding) =>
+      val address = binding.localAddress
+      println(s"Servidor iniciado en http://${address.getHostString}:${address.getPort}/")
+    case Failure(ex) =>
+      println(s"Error al iniciar el servidor: ${ex.getMessage}")
+      system.terminate()
+  }
+
+  scala.sys.addShutdownHook {
+    println("Cerrando servidor...")
     bindingFuture
       .flatMap(_.unbind())
       .onComplete(_ => system.terminate())
+  }
+  
+  try {
+    scala.concurrent.Await.result(system.whenTerminated, scala.concurrent.duration.Duration.Inf)
+  } catch {
+    case ex: Exception =>
+      println(s"Error durante la ejecución: ${ex.getMessage}")
   }
 }

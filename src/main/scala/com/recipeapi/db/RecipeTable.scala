@@ -1,10 +1,9 @@
 package com.recipeapi.db
 
-import slick.jdbc.H2Profile.api._
+import slick.lifted.{ProvenShape, Tag}
 import com.recipeapi.models.Recipe
 import java.time.LocalDateTime
-import slick.jdbc.{JdbcProfile, PostgresProfile}
-
+import DatabaseConfig.profile.api._
 
 class RecipeTable(tag: Tag) extends Table[Recipe](tag, "recipes") {
   def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
