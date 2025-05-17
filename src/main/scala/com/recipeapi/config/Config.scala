@@ -37,7 +37,7 @@ object Config {
   val dbUser = sys.env.getOrElse("PGUSER", "postgres")
   val dbPassword = sys.env.getOrElse("PGPASSWORD", "postgres")
   
-  val serverHost = "0.0.0.0"
+  val serverHost = sys.env.getOrElse("RAILWAY_PUBLIC_DOMAIN","0.0.0.0")
   val serverPort = sys.env.getOrElse("PORT", "8080").toInt
   
   // Debug info
