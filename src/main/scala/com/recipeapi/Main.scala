@@ -37,6 +37,11 @@ object Main extends App {
       system.terminate()
   }
 
+  repository.ensureTablesExist().onComplete {
+    case Success(_) => println("Tablas verificadas correctamente.")
+    case Failure(ex) => println(s"Error al verificar tablas: ${ex.getMessage}")
+  }
+
   scala.sys.addShutdownHook {
     println("Cerrando servidor...")
     bindingFuture
@@ -49,9 +54,5 @@ object Main extends App {
   } catch {
     case ex: Exception =>
       println(s"Error durante la ejecución: ${ex.getMessage}")
-  }
-    repository.ensureTablesExist().onComplete {
-    case Success(_) => println("Tablas verificadas correctamente.")
-    case Failure(ex) => println(s"Error al verificar tablas: ${ex.getMessage}")
   }
 }
