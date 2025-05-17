@@ -60,7 +60,8 @@ class RecipeRepository(implicit ec: ExecutionContext) {
     val insertQuery = (recipes returning recipes.map(_.id)
       into ((recipe, id) => recipe.copy(id = Some(id)))
     ) += recipe
-    
+    println("Perfoorming isertQuery:")
+    println(insertQuery)
     db.run(insertQuery)
   }
   
