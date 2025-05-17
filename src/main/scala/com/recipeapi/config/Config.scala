@@ -11,7 +11,7 @@ object Config {
 
   println(s"Ambiente: $env")
   val profile: JdbcProfile = env match {
-    case "prod" | "aws" => PostgresProfile
+    case "prod" | "railway" => PostgresProfile
     case _ => H2Profile
   }
 
@@ -21,9 +21,9 @@ object Config {
     case _ => config.getConfig("local")
   }
   
-  val dbUrl = dbConfig.getString("url")
-  val dbUser = dbConfig.getString("user")
-  val dbPassword = dbConfig.getString("password")
+  val dbUrl = sys.env.getOrElse("DATABASE_URL", dbConfig.getString("url"))
+  val dbUser = sys.env.getOrElse("PGUSER", dbConfig.getString("user"))
+  val dbPassword = sys.env.getOrElse("PGPASSWORD", dbConfig.getString("password"))
   
   val serverHost = config.getConfig("server").getString("host")
   val serverPort = config.getConfig("server").getInt("port")

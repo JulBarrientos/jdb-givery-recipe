@@ -20,19 +20,20 @@ object Main extends App {
   
   // Inicializar repositorio
   val repository = new RecipeRepository()
-  //repository.init()
+  repository.init()
   
   // Inicializar rutas
   val routes = new RecipeRoutes(repository).routes
   
-  // Iniciar servidor
-  val bindingFuture = Http().newServerAt(Config.serverHost, Config.serverPort).bind(routes)
-  
-  println(s"Server online at http://${Config.serverHost}:${Config.serverPort}/\nPress RETURN to stop...")
+  val port = sys.env.get("PORT").map(_.toInt).getOrElse(Config.serverPort)
+  val host = sys.env.get("HOST").getOrElse(Config.serverHost)
 
-  StdIn.readLine()
+  // Iniciar servidor
+  val bindingFuture = Http().newServerAt(host, port).bind(routes)
   
-  bindingFuture
-    .flatMap(_.unbind())
-    .onComplete(_ => system.terminate())
+  sys.addShutdownHook {
+    bindingFuture
+      .flatMap(_.unbind())
+      .onComplete(_ => system.terminate())
+  }
 }
