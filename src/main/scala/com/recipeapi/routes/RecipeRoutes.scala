@@ -50,7 +50,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
               }
             } ~{
               println(s"Recipe creation failed! RecipeRequest not complete")
-                      complete(StatusCodes.NotFound -> JsObject(
+                      complete(StatusCodes.OK -> JsObject(
                         "message" -> JsString("Recipe creation failed!")
                       ).prettyPrint)
             }
