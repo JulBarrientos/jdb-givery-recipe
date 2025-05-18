@@ -11,6 +11,9 @@ import spray.json._
 
 import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
+import akka.http.scaladsl.model.HttpResponse
+import akka.http.scaladsl.model.HttpEntity
+import akka.http.scaladsl.model.ContentTypes
 
 class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) extends JsonFormats {
   
@@ -35,10 +38,18 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
                   onComplete(repository.create(recipeRequest)) {
                     case Success(recipe) =>{
                       println(s"Recipe successfully created with ID: ${recipe.id}")
-                      complete(StatusCodes.OK -> JsObject(
-                        "message" -> JsString("Recipe successfully created!"),
-                        "recipe" -> JsArray(Vector(recipe.toJson))
-                      ).prettyPrint)
+                      complete(
+                        HttpResponse(
+                          status = StatusCodes.OK,
+                          entity = HttpEntity(
+                            ContentTypes.`application/json`, 
+                            JsObject(
+                              "message" -> JsString("Recipe successfully created!"),
+                              "recipe" -> JsArray(Vector(recipe.toJson))
+                            ).prettyPrint
+                          )
+                        )
+                      )
                     }
                     case Failure(ex) =>{
                       println(s"Recipe creation failed with exception: ${ex.getMessage}")
