@@ -37,9 +37,9 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
   val routes: Route = corsHandler ~ {
     // Separamos completamente las rutas por método HTTP para evitar confusiones
     // ÚNICA RUTA POST
-    (path("api" / "create") & post) {
+    post{ path("/recipes") {
       extractRequest { request =>
-        println(s"Received POST request to /api/create")
+        println(s"Received POST request to /recipes")
         println(s"Headers: ${request.headers.mkString(", ")}")
         
         entity(as[String]) { requestBody =>
@@ -95,7 +95,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
           }
         }
       }
-    } ~
+    }} ~
     // ÚNICA RUTA GET - TODOS LOS RECIPES
     (path("api" / "list") & get) {
       extractRequest { request =>
