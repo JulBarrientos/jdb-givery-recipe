@@ -26,7 +26,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
               validateRecipeRequest(recipeRequest) match {
                 case Some(errorMsg) => {
                   println(s"Recipe creation error: $errorMsg")
-                  complete(StatusCodes.BadRequest -> JsObject(
+                  complete(StatusCodes.BadRequest  -> JsObject(
                     "message" -> JsString("Recipe creation failed!"),
                     "required" -> JsString(errorMsg)
                   ).prettyPrint)
@@ -48,6 +48,11 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
                     }
                   }
               }
+            } ~{
+              println(s"Recipe creation failed! RecipeRequest not complete")
+                      complete(StatusCodes.NotFound -> JsObject(
+                        "message" -> JsString("Recipe creation failed!")
+                      ).prettyPrint)
             }
           } ~
           get {
@@ -128,13 +133,6 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
             }
           }
         }
-      } ~
-      // Agregar una ruta para capturar y registrar solicitudes incorrectas
-      pathPrefix("recipe") { // Nota: esto captura el singular "recipe"
-        println("WARNING: Request received to singular path /recipe instead of plural /recipes")
-        complete(StatusCodes.NotFound -> JsObject(
-          "message" -> JsString("Did you mean to use /recipes instead of /recipe?")
-        ).prettyPrint)
       }
     }
   }
