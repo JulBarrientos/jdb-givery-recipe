@@ -61,7 +61,6 @@ class RecipeRepository(implicit ec: ExecutionContext) {
       into ((recipe, id) => recipe.copy(id = Some(id)))
     ) += recipe
     println("Perfoorming insertQuery:")
-    //println(insertQuery)
     db.run(insertQuery)
   }
   
