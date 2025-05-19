@@ -15,6 +15,7 @@ import akka.http.scaladsl.model.HttpResponse
 import akka.http.scaladsl.model.HttpEntity
 import akka.http.scaladsl.model.ContentTypes
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.StatusCode
 
 class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) extends JsonFormats {
   
@@ -30,61 +31,29 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
               validateRecipeRequest(recipeRequest) match {
                 case Some(errorMsg) => {
                   println(s"Recipe creation error: $errorMsg")
-                  complete(
-                    HttpResponse(
-                      status =StatusCodes.BadRequest,
-                      entity = HttpEntity(
-                        ContentTypes.`application/json`, JsObject (
+                  complete(createResponse(StatusCodes.BadRequest, JsObject (
                           "message" -> JsString("Recipe creation failed!"),
                           "required" -> JsString(errorMsg)
-                        ).prettyPrint
-                      )
-                    )
-                  )
+                          )))
                 }
                 case None =>
                   onComplete(repository.create(recipeRequest)) {
                     case Success(recipe) =>{
                       println(s"Recipe successfully created with ID: ${recipe.id}")
-                      complete(
-                        HttpResponse(
-                          status = StatusCodes.OK,
-                          entity = HttpEntity(
-                            ContentTypes.`application/json`, JsObject (
+                      complete(createResponse(StatusCodes.OK, JsObject (
                               "message" -> JsString("Recipe successfully created!"),
                               "recipe" -> JsArray(Vector(recipe.toJson))
-                            ).prettyPrint
-                          )
-                        )
-                      )
+                              )))
                     }
                     case Failure(ex) =>{
                       println(s"Recipe creation failed with exception: ${ex.getMessage}")
-                      complete(
-                        HttpResponse(
-                          status = StatusCodes.InternalServerError,
-                          entity = HttpEntity(
-                            ContentTypes.`application/json`, JsObject (
-                              "message" -> JsString("Recipe creation failed!")
-                            ).prettyPrint
-                          )
-                        )
-                      )
+                      complete(createResponse(StatusCodes.InternalServerError, JsObject ("message" -> JsString("Recipe creation failed!"))))
                     }
                   }
               }
             } ~{
               println(s"Recipe creation failed! RecipeRequest not complete")
-              complete(
-                HttpResponse(
-                  status = StatusCodes.OK,
-                  entity = HttpEntity(
-                    ContentTypes.`application/json`, JsObject(
-                      "message" -> JsString("Recipe creation failed!")
-                    ).prettyPrint
-                  )
-                )
-              )
+              complete(createResponse(StatusCodes.OK, JsObject("message" -> JsString("Recipe creation failed!"))))
             }
           } ~
           get {
@@ -92,29 +61,11 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
             onComplete(repository.getAll()) {
               case Success(recipes) =>{
                 println(s"Retrieved ${recipes.size} recipes")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.OK, 
-                    entity = HttpEntity( 
-                      ContentTypes.`application/json`, JsObject(
-                        "recipes" -> recipes.toJson
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.OK, JsObject("recipes" -> recipes.toJson)))
               }
               case Failure(ex) =>{
                 println(s"Error retrieving recipes: ${ex.getMessage}")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.InternalServerError,
-                    entity = HttpEntity( 
-                      ContentTypes.`application/json`, JsObject( 
-                        "message" -> JsString("Error retrieving recipes")
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.InternalServerError,  JsObject("message" -> JsString("Error retrieving recipes"))))
               }
             }
           }
@@ -126,41 +77,16 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
             onComplete(repository.getById(id)) {
               case Success(Some(recipe)) =>
                 println(s"Recipe found with ID: $id")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.OK,
-                    entity = HttpEntity(
-                      ContentTypes.`application/json`, JsObject(
+                complete(createResponse(StatusCodes.OK, JsObject(
                         "message" -> JsString("Recipe details by id"),
                         "recipe" -> JsArray(Vector(recipe.toJson))
-                      ).prettyPrint
-                    )
-                  )
-                )
+                        )))
               case Success(None) =>
                 println(s"No recipe found with ID: $id")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.NotFound,
-                    entity = HttpEntity( 
-                      ContentTypes.`application/json`, JsObject(
-                        "message" -> JsString("No recipe found")
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.NotFound, JsObject("message" -> JsString("No recipe found"))))
               case Failure(ex) =>
                 println(s"Error retrieving recipe ID $id: ${ex.getMessage}")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.InternalServerError, 
-                    entity = HttpEntity(
-                      ContentTypes.`application/json`, JsObject(
-                        "message" -> JsString("Error retrieving recipe")
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.InternalServerError, JsObject("message" -> JsString("Error retrieving recipe"))))
             }
           } ~
           patch {
@@ -170,43 +96,16 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
               onComplete(repository.update(id, recipeRequest)) {
                 case Success(Some(recipe)) =>
                   println(s"Recipe ID $id successfully updated")
-                  complete(
-                    HttpResponse(
-                        status = StatusCodes.OK,
-                        entity = HttpEntity( 
-                          ContentTypes.`application/json`, JsObject(
+                  complete(createResponse(StatusCodes.OK, JsObject(
                             "message" -> JsString("Recipe successfully updated!"),
                             "recipe" -> JsArray(Vector(recipe.toJson))
-                          ).prettyPrint
-                        )
-                    )
-                  )
-                case Success(None) => {
+                          )))
+                case Success(None) =>
                   println(s"No recipe found with ID: $id for update")
-                  complete(
-                    HttpResponse(
-                      status = StatusCodes.NotFound,
-                      entity = HttpEntity( 
-                        ContentTypes.`application/json`, JsObject(
-                          "message" -> JsString("No recipe found")
-                        ).prettyPrint
-                      )
-                    )
-                  )
-                }
-                case Failure(ex) => {
+                  complete(createResponse(StatusCodes.NotFound, JsObject("message" -> JsString("No recipe found"))))
+                case Failure(ex) =>
                   println(s"Error updating recipe ID $id: ${ex.getMessage}")
-                  complete(
-                    HttpResponse(
-                      status = StatusCodes.InternalServerError,
-                      entity = HttpEntity(
-                        ContentTypes.`application/json`, JsObject(
-                          "message" -> JsString("Error updating recipe")
-                        ).prettyPrint
-                      )
-                    )
-                  )
-                }
+                  complete(createResponse(StatusCodes.InternalServerError, JsObject("message" -> JsString("Error updating recipe"))))
               }
             }
           } ~
@@ -215,40 +114,13 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
             onComplete(repository.delete(id)) {
               case Success(true) =>
                 println(s"Recipe ID $id successfully deleted")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.OK,
-                    entity = HttpEntity(
-                      ContentTypes.`application/json`, JsObject(
-                        "message" -> JsString("Recipe successfully removed!")
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.OK, JsObject("message" -> JsString("Recipe successfully removed!"))))
               case Success(false) =>
                 println(s"No recipe found with ID: $id for deletion")
-                complete(
-                  HttpResponse(
-                    status = StatusCodes.NotFound,
-                    entity = HttpEntity(
-                        ContentTypes.`application/json`, JsObject(
-                          "message" -> JsString("No recipe found")
-                        ).prettyPrint
-                      )
-                  )
-                )
+                complete(createResponse(StatusCodes.NotFound, JsObject("message" -> JsString("No recipe found"))))
               case Failure(ex) =>
                 println(s"Error deleting recipe ID $id: ${ex.getMessage}")
-                complete(
-                  HttpResponse( 
-                    status = StatusCodes.InternalServerError, 
-                    entity = HttpEntity(
-                      ContentTypes.`application/json`, JsObject(
-                        "message" -> JsString("Error deleting recipe")
-                      ).prettyPrint
-                    )
-                  )
-                )
+                complete(createResponse(StatusCodes.InternalServerError, JsObject("message" -> JsString("Error deleting recipe"))))
             }
           }
         }
@@ -274,5 +146,12 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
       println(s"Missing fields: $missingFields")  
       Some(missingFields.mkString(", "))
     }
+  }
+  
+  private def createResponse(status: StatusCode, json: JsObject) = {
+     HttpResponse( 
+      status = StatusCodes.InternalServerError, 
+      entity = HttpEntity(ContentTypes.`application/json`, json.prettyPrint)
+     )
   }
 }
