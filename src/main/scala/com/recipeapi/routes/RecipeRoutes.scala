@@ -150,7 +150,7 @@ class RecipeRoutes(repository: RecipeRepository)(implicit ec: ExecutionContext) 
   
   private def createResponse(status: StatusCode, json: JsObject) = {
      HttpResponse( 
-      status = StatusCodes.InternalServerError, 
+      status = status, 
       entity = HttpEntity(ContentTypes.`application/json`, json.prettyPrint)
      )
   }
