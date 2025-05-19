@@ -4,16 +4,16 @@ import slick.jdbc.JdbcProfile
 import com.recipeapi.config.Config
 
 object DatabaseConfig {
-  // Usar el perfil desde Config
+  // Set up profile from Config
   val profile: JdbcProfile = Config.profile
   
-  // Configurar la base de datos
+  // DB setUp
   import profile.api._
   
   val db = Database.forURL(
     url = Config.dbUrl,
     user = Config.dbUser,
     password = Config.dbPassword,
-    driver = "org.postgresql.Driver"
+    driver = Config.dbDriver
   )
 }
